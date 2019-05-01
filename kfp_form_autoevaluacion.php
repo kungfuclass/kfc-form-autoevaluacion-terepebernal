@@ -30,6 +30,9 @@ add_shortcode( 'kfp_aspirante_form', 'Kfp_Aspirante_form' );
 */
 function Kfp_Aspirante_form()
 {
+    // Carga esta hoja de estilo para poner más bonito el formulario
+    wp_enqueue_style( 'css_aspirante', plugins_url('style.css', __FILE__));
+    
     // Esta función de PHP activa el almacenamiento en búfer de salida (output buffer).
     // Cuando termine el formulario lo imprime con la función ob_get_clean
     ob_start();
