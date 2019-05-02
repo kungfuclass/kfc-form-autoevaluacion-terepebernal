@@ -17,7 +17,40 @@
  */
  
  // Activación del plugin
- 
+ // Cuando el plugin se active se crea la tabla para recoger los datos si no existe
+ register_activation_hook( __FILE__, 'Kfp_Aspirante_init' );
+
+ /**
+  * Crea la tabla para recoger los datos del formulario
+  * 
+  * @return void
+  */
+  function Kfp_Aspirante_init()
+  {
+        global $wpdb;  // Este objeto global permite acceder a la base de datos de WP
+        // Crea la tabla solo si no existe
+        // Utiliza el mismo prefijo del resto de tablas
+        $tabla_aspirantes = $wpdb ->prefix . 'aspirante';
+        // Utiliza el mismo tipo de orden de la base de datos
+        $charset_collate = $wpdb ->get_charset_collate();
+        // Prepara la consulta
+        $query = "CREATE TABLE IF NOT EXISTS $tabla_aspirantes (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            nombre varchar(40) NOT NULL,
+            correo varchar(100) NOT NULL,
+            nivel_html smallint(4) NOT NULL,
+            nivel_css smallint(4) NOT NULL,
+            nivel_js smallint(4) NOT NULL,
+            aceptacion smallint(4) NOT NULL,
+            created at datetime NOT NULL,
+            UNIQUE (id)
+        ) $charset_collate;";
+        // La función dbDelta permite crear tablas de manera segura,
+        // se define en el fichero upgrade.php que se incluye a continuación
+        include_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        dbDelta( $query );  // Lanza la consulta para crear la tabla de manera segura
+  }
+
  // Creación del shortcode
  // Define el shortcode y lo asocia a una función
 add_shortcode( 'kfp_aspirante_form', 'Kfp_Aspirante_form' );
