@@ -30,9 +30,9 @@
         global $wpdb;  // Este objeto global permite acceder a la base de datos de WP
         // Crea la tabla solo si no existe
         // Utiliza el mismo prefijo del resto de tablas
-        $tabla_aspirantes = $wpdb ->prefix . 'aspirante';
+        $tabla_aspirantes = $wpdb->prefix . 'aspirante';
         // Utiliza el mismo tipo de orden de la base de datos
-        $charset_collate = $wpdb ->get_charset_collate();
+        $charset_collate = $wpdb->get_charset_collate();
         // Prepara la consulta
         $query = "CREATE TABLE IF NOT EXISTS $tabla_aspirantes (
             id mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -42,7 +42,7 @@
             nivel_css smallint(4) NOT NULL,
             nivel_js smallint(4) NOT NULL,
             aceptacion smallint(4) NOT NULL,
-            created at datetime NOT NULL,
+            created_at datetime NOT NULL,
             UNIQUE (id)
         ) $charset_collate;";
         // La función dbDelta permite crear tablas de manera segura,
