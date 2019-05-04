@@ -13,6 +13,8 @@
 
 # 4 de Mayo de 2019
 - Código para grabar los datos. Todo funciona genial. Creo commit.
+- Añadir campo nonce para evitar ataque CSRF. Campo oculto creado con una función de WordPress, puedo visualizarlo al inspeccionar. He corregido también el *id del formulario*, que lo tenía mal escrito. Otro commit y actualizo el repositorio remoto.
+
 
 
 
