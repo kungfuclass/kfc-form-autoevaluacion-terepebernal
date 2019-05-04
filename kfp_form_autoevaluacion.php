@@ -55,14 +55,47 @@
  // Define el shortcode y lo asocia a una función
 add_shortcode( 'kfp_aspirante_form', 'Kfp_Aspirante_form' );
 
-/*
-    Define la función que ejecutará el shortcode.
-    De momento solo pinta un formulario que no hace nada
-
-    @return string
-*/
+/** 
+ *  Define la función que ejecutará el shortcode.
+ *  Comprueba si se han enviado los datos desde el formulario y pinta *  el formulario.
+ *
+ *   @return string
+ **/
 function Kfp_Aspirante_form()
 {
+    global $wpdb;   // Este objeto global permite acceder a la base de datos de  WP
+    // Si viene del formulario grba en la base de datos
+    // Cuidado con el último igual de la condición del if que es doble
+    if ($_POST['nombre'] != ''
+    AND is_email($_POST['correo'])
+    AND $_POST['nivel_html'] != ''
+    AND $_POST['nivel_css'] != ''
+    AND $_POST['nivel_js'] != ''
+    AND $_POST['aceptacion'] == '1'
+    ){
+      $tabla_aspirantes = $wpdb->prefix . 'aspirante';
+      $nombre = sanitize_text_field($_POST['nombre']);
+      $correo = $_POST['correo'];
+      $nivel_html = (int) $_POST['nivel_html'];
+      $nivel_css = (int) $_POST['nivel_css'];
+      $nivel_js = (int) $_POST['nivel_js'];
+      $aceptacion = (int) $_POST['aceptacion'];
+      $created_at = date('Y-m-d H:i:s');
+      $wpdb->insert(
+                $tabla_aspirantes,
+                array(
+                    'nombre' => $nombre,
+                    'correo' => $correo,
+                    'nivel_html' => $nivel_html,
+                    'nivel_css' => $nivel_css,
+                    'nivel_js' => $nivel_js,
+                    'aceptacion' => $aceptacion,
+                    'created_at' => $created_at,
+                )
+          );
+          echo "<p class='exito'><b>Tus datos han sido registrados</b>. Gracias por tu interés. En breve contactaré contigo.</p>";
+
+    }
     // Carga esta hoja de estilo para poner más bonito el formulario
     wp_enqueue_style( 'css_aspirante', plugins_url('style.css', __FILE__));
     
