@@ -15,6 +15,9 @@
 - Código para grabar los datos. Todo funciona genial. Creo commit.
 - Añadir campo nonce para evitar ataque CSRF. Campo oculto creado con una función de WordPress, puedo visualizarlo al inspeccionar. He corregido también el *id del formulario*, que lo tenía mal escrito. Otro commit y actualizo el repositorio remoto.
 
+# 10 de Mayo de 2019
+- Busco en internet una función auxiliar para obtener la **ip del usuario** y la incluyo en el fichero `kfp_form_autoevaluacion.php`. También incluyo el campo `ip` en las funciones `Kfp_Aspirante_init()` y `Kfp_Aspirante_form()` para crearlo en la tabla y que se pueda grabar la ip del usuario en él.
+- Elimino la `tabla wp_aspirante` y desactivo-activo el plugin para que se vuelva a crear la tabla con el campo `ip`. Parece que todo funciona bien. Nuevo commit y actualizo repositorio remoto.
 
 
 
