@@ -153,8 +153,53 @@ function Kfp_Aspirante_form()
 }
 
  // Creación del menú de administración
+ // El hook "admin_menu" permite agregar un nuevo item al menú de administración
+ add_action("admin_menu", "Kfp_Aspirante_menu");
+
+ /**
+  * Agrega el menú del plugin al panel de administración
+  *
+  * @return void
+  */
+  function Kfp_Aspirante_menu()
+  {
+      add_menu_page(
+          'Formulario de Aspirantes', 'Aspirantes', 'manage_options', 'kfp_aspirante_menu', 'Kfp_Aspirante_admin', 'dashicons-feedback', 75
+      );
+  }
  
  // Creación de la tabla de resultados
+ /**
+  * Crea el contenido del panel de administración para el plugin
+  *
+  * @return void
+  */
+  function Kfp_Aspirante_admin()
+  {
+      global $wpdb;
+      $tabla_aspirantes = $wpdb->prefix . 'aspirante';
+      echo '<div class="wrap"><h1>Lista de aspirantes</h1>';
+      echo '<table class="wp-list-table widefat fixed striped">';
+      echo '<thead><tr><th width="30%">Nombre</th><th width="20%">Correo</th><th>HTML</th><th>CSS</th><th>JS</th><th>PHP</th><th>WP</th><th>Total</th></tr></thead>';
+      echo '<tbody id="the-list">';
+      $aspirantes = $wpdb->get_results("SELECT * FROM $tabla_aspirantes");
+      foreach($aspirantes as $aspirante){
+          $nombre = esc_textarea($aspirante->nombre);
+          $correo = esc_textarea($aspirante->correo);
+          $motivacion = esc_textarea( $aspirante->motivacion);
+          $nivel_html = (int) $aspirante->nivel_html;
+          $nivel_css = (int) $aspirante->nivel_css;
+          $nivel_js = (int) $aspirante->nivel_js;
+          $nivel_php = (int) $aspirante->nivel_php;
+          $nivel_wp = (int) $aspirante->nivel_wp;
+          $total = $nivel_html + $nivel_css + $nivel_js + $nivel_php + $nivel_wp;
+          echo "<tr><td><a href='#' title='$motivacion'> $nombre </a></td>
+                <td>$correo</td><td>$nivel_html</td><td>$nivel_css</td>
+                <td>$nivel_js</td><td>$nivel_php</td><td>$nivel_wp</td>
+                <td>$total</td></tr>";
+      }
+      echo '</tbody></table></div>';
+  }
 
  // Función auxiliar para capturar la IP del usuario 
  function getRealIP()

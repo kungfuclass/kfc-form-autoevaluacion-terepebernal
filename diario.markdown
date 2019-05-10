@@ -18,7 +18,7 @@
 # 10 de Mayo de 2019
 - Busco en internet una función auxiliar para obtener la **ip del usuario** y la incluyo en el fichero `kfp_form_autoevaluacion.php`. También incluyo el campo `ip` en las funciones `Kfp_Aspirante_init()` y `Kfp_Aspirante_form()` para crearlo en la tabla y que se pueda grabar la ip del usuario en él.
 - Elimino la `tabla wp_aspirante` y desactivo-activo el plugin para que se vuelva a crear la tabla con el campo `ip`. Parece que todo funciona bien. Nuevo commit y actualizo repositorio remoto.
-
+- Código de creación de **item en menú de administración y tabla de resultados**. Funciona bien, aunque la tabla de resultados incluye columnas para niveles de PHP y WP, para los que no se ha creado código. Me lo apunto para completarlo más adelante. Commit y actualización repositorio remoto.
 
 
 
