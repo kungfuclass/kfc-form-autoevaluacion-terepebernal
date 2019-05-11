@@ -20,5 +20,10 @@
 - Elimino la `tabla wp_aspirante` y desactivo-activo el plugin para que se vuelva a crear la tabla con el campo `ip`. Parece que todo funciona bien. Nuevo commit y actualizo repositorio remoto.
 - Código de creación de **item en menú de administración y tabla de resultados**. Funciona bien, aunque la tabla de resultados incluye columnas para niveles de PHP y WP, para los que no se ha creado código. Me lo apunto para completarlo más adelante. Commit y actualización repositorio remoto.
 
+# 11 de Mayo de 2019
+- He estado viendo en el vídeo de Git la parte de las ramas, aprovechando que quiero añadirle al plugin lo que le falta al código para los niveles de PHP y WordPress, voy a hacer una rama para ello. No sé si tiene mucho sentido, es solo para probar lo de las ramas. 
+- ![Resultado de la tabla:](resultado-tabla-plugin.jpg).
+
+
 
 

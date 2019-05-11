@@ -41,6 +41,8 @@
             nivel_html smallint(4) NOT NULL,
             nivel_css smallint(4) NOT NULL,
             nivel_js smallint(4) NOT NULL,
+            nivel_php smallint(4) NOT NULL,
+            nivel_wp smallint(4) NOT NULL,
             aceptacion smallint(4) NOT NULL,
             ip varchar(50) NOT NULL,
             created_at datetime NOT NULL,
@@ -72,6 +74,8 @@ function Kfp_Aspirante_form()
     AND $_POST['nivel_html'] != ''
     AND $_POST['nivel_css'] != ''
     AND $_POST['nivel_js'] != ''
+    AND $_POST['nivel_php'] != ''
+    AND $_POST['nivel_wp'] != ''
     AND $_POST['aceptacion'] == '1'
     AND wp_verify_nonce( $_POST['aspirante_nonce'], 'graba_aspirante')
     ){
@@ -81,6 +85,8 @@ function Kfp_Aspirante_form()
       $nivel_html = (int) $_POST['nivel_html'];
       $nivel_css = (int) $_POST['nivel_css'];
       $nivel_js = (int) $_POST['nivel_js'];
+      $nivel_php = (int) $_POST['nivel_php'];
+      $nivel_wp = (int) $_POST['nivel_wp'];
       $aceptacion = (int) $_POST['aceptacion'];
       $ip = getRealIP();
       $created_at = date('Y-m-d H:i:s');
@@ -92,6 +98,8 @@ function Kfp_Aspirante_form()
                     'nivel_html' => $nivel_html,
                     'nivel_css' => $nivel_css,
                     'nivel_js' => $nivel_js,
+                    'nivel_php' => $nivel_php,
+                    'nivel_wp' => $nivel_wp,
                     'aceptacion' => $aceptacion,
                     'ip' => $ip,
                     'created_at' => $created_at,
@@ -137,6 +145,20 @@ function Kfp_Aspirante_form()
         <input type="radio" name="nivel_js" value="2" required>Estoy aprendiendo<br />
         <input type="radio" name="nivel_js" value="3" required>Tengo experiencia<br />    
         <input type="radio" name="nivel_js" value="4" required>Lo domino al dedillo
+    </div>
+    <div class="form-input">
+        <label for="nivel_php">¿Cuál es tu nivel de PHP?</label><br />
+        <input type="radio" name="nivel_php" value="1" required>Nada<br />
+        <input type="radio" name="nivel_php" value="2" required>Estoy aprendiendo<br />
+        <input type="radio" name="nivel_php" value="3" required>Tengo experiencia<br />    
+        <input type="radio" name="nivel_php" value="4" required>Lo domino al dedillo
+    </div>
+    <div class="form-input">
+        <label for="nivel_wp">¿Cuál es tu nivel de WordPress?</label><br />
+        <input type="radio" name="nivel_wp" value="1" required>Nada<br />
+        <input type="radio" name="nivel_wp" value="2" required>Estoy aprendiendo<br />
+        <input type="radio" name="nivel_wp" value="3" required>Tengo experiencia<br />    
+        <input type="radio" name="nivel_wp" value="4" required>Lo domino al dedillo
     </div>
     <div class="form-input">
         <label for="aceptacion">La información facilitada se tratará con respeto y admiración.</label><br />
