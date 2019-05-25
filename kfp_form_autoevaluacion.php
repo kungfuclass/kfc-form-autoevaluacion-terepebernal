@@ -253,3 +253,15 @@ function Kfp_Aspirante_form()
      }
  
  }
+
+ // Función auxiliar para obtener de la tabla wp_options el email del administrador
+ function Kfp_get_email_admin()
+ {
+     global $wpdb;
+     $resultados= $wpdb->get_results( "SELECT option_value FROM {$wpdb->prefix}options WHERE option_name='admin_email'", OBJECT );
+     foreach($resultados as $resultado){
+        $correo = ($resultado->option_value);
+    }
+    
+    return $correo;
+ }
