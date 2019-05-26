@@ -27,3 +27,10 @@
 # 25 de Mayo de 2019
 - Voy a ver si soy capaz de llevar a cabo las propuestas de mejora para el plugin que se mencionan en el ejercicio. La primera es **enviar un correo al administrador del sitio cuando se envíe un formulario**. He estado buscando información para ver si hay alguna función de WordPress con la que obtener el email del administrador, quizás exista pero yo no la he encontrado.
 - He conseguido crearla, la he llamado `Kfp_get_email_admin()`. Hace una consulta en la base de datos, mediante la cual obtiene el **email del administrador**, que (si no me equivoco) se encuentra en la tabla `wp_options`.
+
+# 26 de Mayo de 2019
+- Ayer me di cuenta que estaba en una rama en la que no quería haber hecho el commit, así que esta mañana me he puesto a buscar información para tratar de arreglarlo.
+- Para evitar destrozos grandes lo primero que he hecho antes de hacer ningún cambio ha sido hacerme una copia del directorio completo.
+- Después he hecho un `git revert HEAD`, con ello he podido quitar el commit del repositorio remoto. A continuación `git resert --soft HEAD-1`, lo que ha hecho que el commit se borrara de local pero sin modificar los cambios.
+- Hasta ahí todo bien. El problema ha venido cuando he creado otra rama llamada **enviar_email_administrador** y he querido pasar ahí los cambios; menos mal que era poco código y había hecho una copia antes. He aprendido en parte el comando `git stash`, que parece ser que es para guardar cambios temporalmente, pero al final ha habido una serie de conflictos y se me ha esfumado el código por algún sitio, creo que ha sido al hacer `git stash pop`. 
+- Como lo tenía guardado, he conseguido rehacerlo, y tengo mi nueva rama con los cambios, aunque al final haya sido a lo bruto.
