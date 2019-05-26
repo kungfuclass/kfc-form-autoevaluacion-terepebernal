@@ -22,8 +22,8 @@
 
 # 11 de Mayo de 2019
 - He estado viendo en el vídeo de Git la parte de las ramas, aprovechando que quiero añadirle al plugin lo que le falta al código para los niveles de PHP y WordPress, voy a hacer una rama para ello. No sé si tiene mucho sentido, es solo para probar lo de las ramas. 
-- ![Resultado de la tabla:](resultado-tabla-plugin.jpg).
+![Resultado de la tabla:](resultado-tabla-plugin.jpg).
 
-
-
-
+# 25 de Mayo de 2019
+- Voy a ver si soy capaz de llevar a cabo las propuestas de mejora para el plugin que se mencionan en el ejercicio. La primera es **enviar un correo al administrador del sitio cuando se envíe un formulario**. He estado buscando información para ver si hay alguna función de WordPress con la que obtener el email del administrador, quizás exista pero yo no la he encontrado.
+- He conseguido crearla, la he llamado `Kfp_get_email_admin()`. Hace una consulta en la base de datos, mediante la cual obtiene el **email del administrador**, que (si no me equivoco) se encuentra en la tabla `wp_options`.
