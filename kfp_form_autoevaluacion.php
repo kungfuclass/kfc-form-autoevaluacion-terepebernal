@@ -44,7 +44,6 @@
             nivel_php smallint(4) NOT NULL,
             nivel_wp smallint(4) NOT NULL,
             aceptacion smallint(4) NOT NULL,
-            ip varchar(50) NOT NULL,
             created_at datetime NOT NULL,
             UNIQUE (id)
         ) $charset_collate;";
@@ -88,7 +87,6 @@ function Kfp_Aspirante_form()
       $nivel_php = (int) $_POST['nivel_php'];
       $nivel_wp = (int) $_POST['nivel_wp'];
       $aceptacion = (int) $_POST['aceptacion'];
-      $ip = getRealIP();
       $created_at = date('Y-m-d H:i:s');
       $wpdb->insert(
                 $tabla_aspirantes,
@@ -101,7 +99,6 @@ function Kfp_Aspirante_form()
                     'nivel_php' => $nivel_php,
                     'nivel_wp' => $nivel_wp,
                     'aceptacion' => $aceptacion,
-                    'ip' => $ip,
                     'created_at' => $created_at,
                 )
           );
@@ -223,46 +220,4 @@ function Kfp_Aspirante_form()
       echo '</tbody></table></div>';
   }
 
- // Función auxiliar para capturar la IP del usuario 
- function getRealIP()
- {
- 
-     if (isset($_SERVER["HTTP_CLIENT_IP"]))
-     {
-         return $_SERVER["HTTP_CLIENT_IP"];
-     }
-     elseif (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
-     {
-         return $_SERVER["HTTP_X_FORWARDED_FOR"];
-     }
-     elseif (isset($_SERVER["HTTP_X_FORWARDED"]))
-     {
-         return $_SERVER["HTTP_X_FORWARDED"];
-     }
-     elseif (isset($_SERVER["HTTP_FORWARDED_FOR"]))
-     {
-         return $_SERVER["HTTP_FORWARDED_FOR"];
-     }
-     elseif (isset($_SERVER["HTTP_FORWARDED"]))
-     {
-         return $_SERVER["HTTP_FORWARDED"];
-     }
-     else
-     {
-         return $_SERVER["REMOTE_ADDR"];
-     }
- 
- }
 
-
- // Función auxiliar para obtener de la tabla wp_options el email del administrador
- function Kfp_get_email_admin()
- {
-     global $wpdb;
-     $resultados= $wpdb->get_results( "SELECT option_value FROM {$wpdb->prefix}options WHERE option_name='admin_email'", OBJECT );
-     foreach($resultados as $resultado){
-        $correo = ($resultado->option_value);
-    }
-    
-    return $correo;
- }
