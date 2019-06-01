@@ -51,6 +51,8 @@
         // se define en el fichero upgrade.php que se incluye a continuación
         include_once ABSPATH . 'wp-admin/includes/upgrade.php';
         dbDelta( $query );  // Lanza la consulta para crear la tabla de manera segura
+
+        Kfp_Aspirante_IP();     // Si no existe la columna IP se crea
   }
 
  // Creación del shortcode
@@ -76,6 +78,7 @@ function Kfp_Aspirante_form()
     AND $_POST['nivel_php'] != ''
     AND $_POST['nivel_wp'] != ''
     AND $_POST['aceptacion'] == '1'
+    AND $_POST['ip_aspirante'] != ''
     AND wp_verify_nonce( $_POST['aspirante_nonce'], 'graba_aspirante')
     ){
       $tabla_aspirantes = $wpdb->prefix . 'aspirante';
@@ -88,6 +91,7 @@ function Kfp_Aspirante_form()
       $nivel_wp = (int) $_POST['nivel_wp'];
       $aceptacion = (int) $_POST['aceptacion'];
       $created_at = date('Y-m-d H:i:s');
+      $ip_aspirante = $_POST['ip_aspirante'];
       $wpdb->insert(
                 $tabla_aspirantes,
                 array(
@@ -100,10 +104,12 @@ function Kfp_Aspirante_form()
                     'nivel_wp' => $nivel_wp,
                     'aceptacion' => $aceptacion,
                     'created_at' => $created_at,
+                    'ip_aspirante' => $ip_aspirante,
                 )
           );
           echo "<p class='exito'><b>Tus datos han sido registrados</b>. Gracias por tu interés. En breve contactaré contigo.</p>";
 
+        
     }
     // Carga esta hoja de estilo para poner más bonito el formulario
     wp_enqueue_style( 'css_aspirante', plugins_url('style.css', __FILE__));
@@ -158,6 +164,10 @@ function Kfp_Aspirante_form()
         <input type="radio" name="nivel_wp" value="4" required>Lo domino al dedillo
     </div>
     <div class="form-input">
+        <label for="ip_aspirante">IP </label>
+        <input type="text" name="ip_aspirante" value=<?php echo Kfp_getRealIP(); ?> readonly>
+    </div>
+    <div class="form-input">
         <label for="aceptacion">La información facilitada se tratará con respeto y admiración.</label><br />
         <input type="checkbox" id="aceptacion" name="aceptacion" value="1" required> Entiendo y acepto las codiciones</div>
     </div>
@@ -199,7 +209,7 @@ function Kfp_Aspirante_form()
       $tabla_aspirantes = $wpdb->prefix . 'aspirante';
       echo '<div class="wrap"><h1>Lista de aspirantes</h1>';
       echo '<table class="wp-list-table widefat fixed striped">';
-      echo '<thead><tr><th width="30%">Nombre</th><th width="20%">Correo</th><th>HTML</th><th>CSS</th><th>JS</th><th>PHP</th><th>WP</th><th>Total</th></tr></thead>';
+      echo '<thead><tr><th width="30%">Nombre</th><th width="20%">Correo</th><th>HTML</th><th>CSS</th><th>JS</th><th>PHP</th><th>WP</th><th>Total</th><th>IP</th></tr></thead>';
       echo '<tbody id="the-list">';
       $aspirantes = $wpdb->get_results("SELECT * FROM $tabla_aspirantes");
       foreach($aspirantes as $aspirante){
@@ -212,11 +222,61 @@ function Kfp_Aspirante_form()
           $nivel_php = (int) $aspirante->nivel_php;
           $nivel_wp = (int) $aspirante->nivel_wp;
           $total = $nivel_html + $nivel_css + $nivel_js + $nivel_php + $nivel_wp;
+          $ip_aspirante = $aspirante->ip_aspirante;
           echo "<tr><td><a href='#' title='$motivacion'> $nombre </a></td>
                 <td>$correo</td><td>$nivel_html</td><td>$nivel_css</td>
                 <td>$nivel_js</td><td>$nivel_php</td><td>$nivel_wp</td>
-                <td>$total</td></tr>";
+                <td>$total</td><td>$ip_aspirante</td></tr>";
       }
       echo '</tbody></table></div>';
+  }
+
+
+ 
+// Función que actualiza la tabla aspirantes en la base de datos con el campo IP, si no existe.
+
+function Kfp_Aspirante_IP() {
+    global $wpdb;
+    $tabla_aspirantes = $wpdb->prefix . 'aspirante';
+
+    // Comprueba si existe la columna para la IP y si no existe la crea
+    $query = "SHOW COLUMNS FROM $tabla_aspirantes WHERE Field = 'ip_aspirante'";
+    $result= $wpdb->query($query); 
+    if ($result === 0){
+        // Añade a la tabla la columna para la IP
+        $query = "ALTER TABLE $tabla_aspirantes ADD `ip_aspirante` VARCHAR(50)";
+        $result= $wpdb->query($query); 
+    }
+} 
+  
+  // Función auxiliar para capturar la IP del usuario 
+  function Kfp_getRealIP()
+  {
+  
+      if (isset($_SERVER["HTTP_CLIENT_IP"]))
+      {
+          return $_SERVER["HTTP_CLIENT_IP"];
+      }
+      elseif (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
+      {
+          return $_SERVER["HTTP_X_FORWARDED_FOR"];
+      }
+      elseif (isset($_SERVER["HTTP_X_FORWARDED"]))
+      {
+          return $_SERVER["HTTP_X_FORWARDED"];
+      }
+      elseif (isset($_SERVER["HTTP_FORWARDED_FOR"]))
+      {
+          return $_SERVER["HTTP_FORWARDED_FOR"];
+      }
+      elseif (isset($_SERVER["HTTP_FORWARDED"]))
+      {
+          return $_SERVER["HTTP_FORWARDED"];
+      }
+      else
+      {
+          return $_SERVER["REMOTE_ADDR"];
+      }
+  
   }
 

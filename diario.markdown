@@ -1,3 +1,8 @@
+# 1 de Junio de 2019
+- Viendo una charla he descubierto que hay **extensiones para Visual Studio Code** que permiten ver un **preview de los archivos de markdown**. Es genial, antes tenía que buscar uno online antes de subirlo para asegurarme que se veía bien, ahora lo veo mientras lo voy haciendo. El que estoy usando se llama **Markdown Preview Enhanced**.
+- Para la **versión 0.1.2** se comprueba si existe en la tabla `wp_aspirante` el campo `ip_aspirante` y si no existe se añade. Le he dado mil vueltas y al final esta es la mejor manera que he conseguido hacer sin que me de problemas.
+- También se añade un `input` de solo lectura mostrando la IP en el formulario y el código necesario dentro de `Kfp_Aspirante_form` para que se guarde el dato en la tabla. 
+
 # 28 de Mayo de 2019
 - Se me ha propuesto el reto de añadir la IP de los aspirantes actualizando la base de datos con el plugin, y no como lo había hecho yo, a mano. Comienzo hoy con ello.
 - He visto que en algunos plugins para anotar los cambios crean un archivo llamado `changelog.txt` para explicar los cambios que hay de una versión a otra, y otros lo hacen en el mismo `readme`. Yo, como no sé muy bien todavía que estoy haciendo, de momento lo voy a escribir aquí.
