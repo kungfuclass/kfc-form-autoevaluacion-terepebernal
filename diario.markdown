@@ -1,3 +1,6 @@
+# 7 de Junio de 2019
+- Retomo la rama **enviar_email_adminitrador**. Obtengo el correo del administrador mediante la función `Kfp_get_email_admin()` y envío el email de notifiación, después de que el aspirante haya rellenado el formulario, mediante la función `Kfp_send_email_admin()`.
+
 # 28 de Mayo de 2019
 - Se me ha propuesto el reto de añadir la IP de los aspirantes actualizando la base de datos con el plugin, y no como lo había hecho yo, a mano. Comienzo hoy con ello.
 - He visto que en algunos plugins para anotar los cambios crean un archivo llamado `changelog.txt` para explicar los cambios que hay de una versión a otra, y otros lo hacen en el mismo `readme`. Yo, como no sé muy bien todavía que estoy haciendo, de momento lo voy a escribir aquí.
@@ -10,7 +13,7 @@
 - Ayer me di cuenta que estaba en una rama en la que no quería haber hecho el commit, así que esta mañana me he puesto a buscar información para tratar de arreglarlo.
 - Para evitar destrozos grandes lo primero que he hecho antes de hacer ningún cambio ha sido hacerme una copia del directorio completo.
 - Después he hecho un `git revert HEAD`, con ello he podido quitar el commit del repositorio remoto. A continuación `git resert --soft HEAD-1`, lo que ha hecho que el commit se borrara de local pero sin modificar los cambios.
-- Hasta ahí todo bien. El problema ha venido cuando he creado otra rama llamada **enviar_email_administrador** y he querido pasar ahí los cambios; menos mal que era poco código y había hecho una copia antes. He aprendido en parte el comando `git stash`, que parece ser que es para guardar cambios temporalmente, pero al final ha habido una serie de conflictos y se me ha esfumado el código por algún sitio, creo que ha sido al hacer `git stash pop`. 
+- Hasta ahí todo bien. El problema ha venido cuando he creado otra rama llamada **enviar_email_administrador** y he querido pasar ahí los cambios; menos mal que era poco código y había hecho una copia antes. He aprendido en parte el comando `git stash`, que parece ser que es para guardar cambios temporalmente, pero al final ha habido una serie de conflictos y se me ha esfumado el código por algún sitio, creo que ha sido al hacer `git stash pop`.
 - Como lo tenía guardado, he conseguido rehacerlo, y tengo mi nueva rama con los cambios, aunque al final haya sido a lo bruto.
 
 # 25 de Mayo de 2019
@@ -18,7 +21,7 @@
 - He conseguido crearla, la he llamado `Kfp_get_email_admin()`. Hace una consulta en la base de datos, mediante la cual obtiene el **email del administrador**, que (si no me equivoco) se encuentra en la tabla `wp_options`.
 
 # 11 de Mayo de 2019
-- He estado viendo en el vídeo de Git la parte de las ramas, aprovechando que quiero añadirle al plugin lo que le falta al código para los niveles de PHP y WordPress, voy a hacer una rama para ello. No sé si tiene mucho sentido, es solo para probar lo de las ramas. 
+- He estado viendo en el vídeo de Git la parte de las ramas, aprovechando que quiero añadirle al plugin lo que le falta al código para los niveles de PHP y WordPress, voy a hacer una rama para ello. No sé si tiene mucho sentido, es solo para probar lo de las ramas.
 ![Resultado de la tabla:](resultado-tabla-plugin.jpg).
 
 # 10 de Mayo de 2019
@@ -34,7 +37,7 @@
 - Corrijo el error encontrado por **tonioruiz** que impedía que se creara la tabla del plugin. Creo commit y lo actualizo en repositorio remoto. Cierro incidencia (issue).
 
 # 2 de Mayo de 2019
-- Quería aprender algo de Markdown, así que he aprovechado esto del diario y he visto un vídeo que hay en youtube de 5 min. para aprender lo básico y poder hacer este archivo con Markdown. 
+- Quería aprender algo de Markdown, así que he aprovechado esto del diario y he visto un vídeo que hay en youtube de 5 min. para aprender lo básico y poder hacer este archivo con Markdown.
 - He copiado todo el código del post del apartado *"crear la tabla para recoger los datos"*. Sigue funcionando bien y no me da ningún error, pero no me crea la tabla, no sé por qué, he desactivado el plugin y lo he vuelto a activar. **¡¡SOS!!**. Creo commit y lo actualizo en repositorio remoto.
 
 # 1 de Mayo de 2019
