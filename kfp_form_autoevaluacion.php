@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name:  KFP Formulario Autoevaluación
- * Description:  Formulario para valorar el nivel de partida de los usuarios en distintos temas. 
- * Utiliza el shortcode [kfp_aspirante_form] para que el formulario 
+ * Description:  Formulario para valorar el nivel de partida de los usuarios en distintos temas.
+ * Utiliza el shortcode [kfp_aspirante_form] para que el formulario
  * aparezca en la página o el post que desees.
- * Version:      0.1.2
+ * Version:      0.1.2.0
  * Author:       Pequeño Saltamontes
  * Author URI:   https://kungfupress.com/
  * PHP Version:  5.6
@@ -15,14 +15,14 @@
  * @license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.txt
  * @link     https://kungfupress.com
  */
- 
+
  // Activación del plugin
  // Cuando el plugin se active se crea la tabla para recoger los datos si no existe
  register_activation_hook( __FILE__, 'Kfp_Aspirante_init' );
 
  /**
   * Crea la tabla para recoger los datos del formulario
-  * 
+  *
   * @return void
   */
   function Kfp_Aspirante_init()
@@ -59,7 +59,7 @@
  // Define el shortcode y lo asocia a una función
 add_shortcode( 'kfp_aspirante_form', 'Kfp_Aspirante_form' );
 
-/** 
+/**
  *  Define la función que ejecutará el shortcode.
  *  Comprueba si se han enviado los datos desde el formulario y pinta *  el formulario.
  *
@@ -109,11 +109,11 @@ function Kfp_Aspirante_form()
           );
           echo "<p class='exito'><b>Tus datos han sido registrados</b>. Gracias por tu interés. En breve contactaré contigo.</p>";
 
-        
+
     }
     // Carga esta hoja de estilo para poner más bonito el formulario
     wp_enqueue_style( 'css_aspirante', plugins_url('style.css', __FILE__));
-    
+
     // Esta función de PHP activa el almacenamiento en búfer de salida (output buffer).
     // Cuando termine el formulario lo imprime con la función ob_get_clean
     ob_start();
@@ -132,35 +132,35 @@ function Kfp_Aspirante_form()
         <label for="nivel_html">¿Cuál es tu nivel de HTML?</label><br />
         <input type="radio" name="nivel_html" value="1" required>Nada<br />
         <input type="radio" name="nivel_html" value="2" required>Estoy aprendiendo<br />
-        <input type="radio" name="nivel_html" value="3" required>Tengo experiencia<br />    
+        <input type="radio" name="nivel_html" value="3" required>Tengo experiencia<br />
         <input type="radio" name="nivel_html" value="4" required>Lo domino al dedillo
     </div>
     <div class="form-input">
         <label for="nivel_css">¿Cuál es tu nivel de CSS?</label><br />
         <input type="radio" name="nivel_css" value="1" required>Nada<br />
         <input type="radio" name="nivel_css" value="2" required>Estoy aprendiendo<br />
-        <input type="radio" name="nivel_css" value="3" required>Tengo experiencia<br />    
+        <input type="radio" name="nivel_css" value="3" required>Tengo experiencia<br />
         <input type="radio" name="nivel_css" value="4" required>Lo domino al dedillo
     </div>
     <div class="form-input">
         <label for="nivel_js">¿Cuál es tu nivel de JavaScript?</label><br />
         <input type="radio" name="nivel_js" value="1" required>Nada<br />
         <input type="radio" name="nivel_js" value="2" required>Estoy aprendiendo<br />
-        <input type="radio" name="nivel_js" value="3" required>Tengo experiencia<br />    
+        <input type="radio" name="nivel_js" value="3" required>Tengo experiencia<br />
         <input type="radio" name="nivel_js" value="4" required>Lo domino al dedillo
     </div>
     <div class="form-input">
         <label for="nivel_php">¿Cuál es tu nivel de PHP?</label><br />
         <input type="radio" name="nivel_php" value="1" required>Nada<br />
         <input type="radio" name="nivel_php" value="2" required>Estoy aprendiendo<br />
-        <input type="radio" name="nivel_php" value="3" required>Tengo experiencia<br />    
+        <input type="radio" name="nivel_php" value="3" required>Tengo experiencia<br />
         <input type="radio" name="nivel_php" value="4" required>Lo domino al dedillo
     </div>
     <div class="form-input">
         <label for="nivel_wp">¿Cuál es tu nivel de WordPress?</label><br />
         <input type="radio" name="nivel_wp" value="1" required>Nada<br />
         <input type="radio" name="nivel_wp" value="2" required>Estoy aprendiendo<br />
-        <input type="radio" name="nivel_wp" value="3" required>Tengo experiencia<br />    
+        <input type="radio" name="nivel_wp" value="3" required>Tengo experiencia<br />
         <input type="radio" name="nivel_wp" value="4" required>Lo domino al dedillo
     </div>
     <div class="form-input">
@@ -176,7 +176,7 @@ function Kfp_Aspirante_form()
     </div>
     </form>
     <?php
-    
+
     // Devuelve el contenido del buffer de salida
     return ob_get_clean();
 }
@@ -196,7 +196,7 @@ function Kfp_Aspirante_form()
           'Formulario de Aspirantes', 'Aspirantes', 'manage_options', 'kfp_aspirante_menu', 'Kfp_Aspirante_admin', 'dashicons-feedback', 75
       );
   }
- 
+
  // Creación de la tabla de resultados
  /**
   * Crea el contenido del panel de administración para el plugin
@@ -232,7 +232,7 @@ function Kfp_Aspirante_form()
   }
 
 
- 
+
 // Función que actualiza la tabla aspirantes en la base de datos con el campo IP, si no existe.
 
 function Kfp_Aspirante_IP() {
@@ -241,18 +241,18 @@ function Kfp_Aspirante_IP() {
 
     // Comprueba si existe la columna para la IP y si no existe la crea
     $query = "SHOW COLUMNS FROM $tabla_aspirantes WHERE Field = 'ip_aspirante'";
-    $result= $wpdb->query($query); 
+    $result= $wpdb->query($query);
     if ($result === 0){
         // Añade a la tabla la columna para la IP
         $query = "ALTER TABLE $tabla_aspirantes ADD `ip_aspirante` VARCHAR(50)";
-        $result= $wpdb->query($query); 
+        $result= $wpdb->query($query);
     }
-} 
-  
-  // Función auxiliar para capturar la IP del usuario 
+}
+
+  // Función auxiliar para capturar la IP del usuario
   function Kfp_getRealIP()
   {
-  
+
       if (isset($_SERVER["HTTP_CLIENT_IP"]))
       {
           return $_SERVER["HTTP_CLIENT_IP"];
@@ -277,6 +277,6 @@ function Kfp_Aspirante_IP() {
       {
           return $_SERVER["REMOTE_ADDR"];
       }
-  
+
   }
 

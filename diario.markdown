@@ -1,7 +1,10 @@
+# 7 de Junio de 2019
+- Llamo a la versión **0.1.2.0** en vez de 0.1.2, ya que he llamado a la de enviar email al administrador como 0.1.2.1 y seguiré la misma norma con las siguientes propuestas de mejora. Después cambiaré de nombre a las ramas, llamándolas como la versión.
+
 # 1 de Junio de 2019
 - Viendo una charla he descubierto que hay **extensiones para Visual Studio Code** que permiten ver un **preview de los archivos de markdown**. Es genial, antes tenía que buscar uno online antes de subirlo para asegurarme que se veía bien, ahora lo veo mientras lo voy haciendo. El que estoy usando se llama **Markdown Preview Enhanced**.
 - Para la **versión 0.1.2** se comprueba si existe en la tabla `wp_aspirante` el campo `ip_aspirante` y si no existe se añade. Le he dado mil vueltas y al final esta es la mejor manera que he conseguido hacer sin que me de problemas.
-- También se añade un `input` de solo lectura mostrando la IP en el formulario y el código necesario dentro de `Kfp_Aspirante_form` para que se guarde el dato en la tabla. 
+- También se añade un `input` de solo lectura mostrando la IP en el formulario y el código necesario dentro de `Kfp_Aspirante_form` para que se guarde el dato en la tabla.
 
 # 28 de Mayo de 2019
 - Se me ha propuesto el reto de añadir la IP de los aspirantes actualizando la base de datos con el plugin, y no como lo había hecho yo, a mano. Comienzo hoy con ello.
@@ -25,7 +28,7 @@
 - Corrijo el error encontrado por **tonioruiz** que impedía que se creara la tabla del plugin. Creo commit y lo actualizo en repositorio remoto. Cierro incidencia (issue).
 
 # 2 de Mayo de 2019
-- Quería aprender algo de Markdown, así que he aprovechado esto del diario y he visto un vídeo que hay en youtube de 5 min. para aprender lo básico y poder hacer este archivo con Markdown. 
+- Quería aprender algo de Markdown, así que he aprovechado esto del diario y he visto un vídeo que hay en youtube de 5 min. para aprender lo básico y poder hacer este archivo con Markdown.
 - He copiado todo el código del post del apartado *"crear la tabla para recoger los datos"*. Sigue funcionando bien y no me da ningún error, pero no me crea la tabla, no sé por qué, he desactivado el plugin y lo he vuelto a activar. **¡¡SOS!!**. Creo commit y lo actualizo en repositorio remoto.
 
 # 1 de Mayo de 2019
