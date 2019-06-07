@@ -1,3 +1,6 @@
+# 7 de Junio de 2019
+- Revierto el commit relacionado con la IP del aspirante. 
+
 # 1 de Junio de 2019
 - Este commit es solo para cambiar el orden de las fechas en el diario y que se vean las más actuales antes. 
 - Decir que desde el 11 de mayo que empecé con lo de las ramas he aprendido a crearlas, borrarlas y moverme de unas a otras. Lo que todavía no he hecho es fusionarlas.
@@ -31,11 +34,14 @@
 
 
 
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> parent of f5579ab... Crea función auxiliar para IP del usuario
 
 
 
