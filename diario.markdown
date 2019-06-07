@@ -1,5 +1,5 @@
 # 7 de Junio de 2019
-- Retomo la rama **enviar_email_adminitrador**. Obtengo el correo del administrador mediante la función `Kfp_get_email_admin()` y envío el email de notifiación, después de que el aspirante haya rellenado el formulario, mediante la función `Kfp_send_email_admin()`.
+- Retomo la rama **enviar_email_adminitrador**. Obtengo el correo del administrador mediante la función `Kfp_get_email_admin()` y envío el email de notifiación, después de que el aspirante haya rellenado el formulario, mediante la función `Kfp_send_email_admin()`. Cambio de nombre a la rama por **version_0.1.2.1**.
 
 # 28 de Mayo de 2019
 - Se me ha propuesto el reto de añadir la IP de los aspirantes actualizando la base de datos con el plugin, y no como lo había hecho yo, a mano. Comienzo hoy con ello.
