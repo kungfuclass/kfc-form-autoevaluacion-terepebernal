@@ -112,7 +112,7 @@ function Kfp_Aspirante_form()
     // Cuando termine el formulario lo imprime con la función ob_get_clean
     ob_start();
     ?>
-    <form action="<?php get_the_permalink(); ?>" method="post" id="form_aspirante" class="cuestionario">
+    <form action="<?php echo esc_url(plugin_dir_url(__FILE__). 'kfp_thanks.php'); ?>" method="post" id="form_aspirante" class="cuestionario">
     <?php wp_nonce_field('graba_aspirante', 'aspirante_nonce'); ?>
     <div class="form-input">
         <label for="nombre">Nombre</label>

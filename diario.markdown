@@ -1,3 +1,10 @@
+# 9 de Junio de 2019
+- He creado esta rama, **version_0.1.2.2** para hacer la propuesta de mejora del plugin de la página de confirmación.
+- LLevo dos días dándole vueltas y haciendo mil pruebas, pero no hay manera, así que lo he hecho, pero no como debería hacerse en WordPress. He estado viendo una función llamada `wp_redirect`, el hook `template_redirect`, y algunas cosas más. Supongo que por ahí deben ir los tiros, pero no sé manejarlo y no he conseguido hacerlo bien.
+- Le he cambiado el `action` al `form` para que después de darle al botón de enviar me lleve a la página `kfp_thanks.php`, pero no encuentro la manera de que esta página sea tratada como parte de WordPress, así que para que coja los estilos le hecho un `link rel="stylesheet"` de HTML.
+- De momento lo dejo así y lo cambiaré cuando sepa hacerlo bien.
+- Cada día me manejo mejor con Git.
+
 # 7 de Junio de 2019
 - Revierto el commit relacionado con la IP del aspirante.
 - Fusiono la rama **incluir_niveles_php_y_wp** con la rama master.
